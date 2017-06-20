@@ -84,7 +84,7 @@ eureka:
   client:
     registerWithEureka: true
     serviceUrl:
-      defaultZone: http://${EUREKA_HOST}:${EUREKA_PORT}/eureka/
+      defaultZone: http://sb-ref-eureka-service:8761/eureka/
     fetch-registry: false
 
 ---
