@@ -1,5 +1,4 @@
 server:
-  port: ${PORT:8080}
   context-path: /uaa
 
 info:
@@ -11,7 +10,7 @@ security:
     client:
       clientId: acme
       clientSecret: acmesecret
-      authorized-grant-types: authorization_code,refresh_token,implicit,password,client_credentials
+      authorized-grant-types: "authorization_code,refresh_token,implicit,password,client_credentials"
       scope: server
 
 logging:
