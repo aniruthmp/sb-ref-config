@@ -1,0 +1,45 @@
+# Disable Spring Cloud and Zipkin
+spring:
+  cloud:
+    inetutils:
+      ignoredInterfaces:
+        - docker0
+        - veth.*
+    stream:
+      bindings:
+        input:
+          destination: venuetopic
+          content-type: application/json
+          group: venuegroup
+          resetOffsets: true
+      kafka:
+        binder:
+          brokers: localhost:9092
+        filter: test
+  data:
+    couchbase:
+      auto-index: false
+  couchbase:
+    bootstrap-hosts: localhost
+    bucket:
+      name: default
+      password:
+    env:
+      ssl:
+        enabled: false
+
+---
+spring:
+  profiles: local
+
+eureka:
+  client:
+    enabled: false
+
+---
+spring:
+  profiles: docker
+  cloud:
+    config:
+      uri: http://sb-ref-config-service:8080
+      fail-fast: true

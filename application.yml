@@ -1,0 +1,104 @@
+server.port: 8080
+
+info:
+  id: ${spring.application.name}
+
+management:
+  port: ${server.port}
+  context-path: /admin
+  info.git.mode: full
+  security.enabled: false
+
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
+
+ribbon:
+  client:
+    name: ${spring.application.name}
+  eureka:
+    enabled: true
+
+###
+# Hystrix Configuration
+###
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000
+
+###
+# Logging Configuration
+###
+logging:
+  level:
+    root: INFO
+    org:
+      springframework: INFO
+      hibernate: ERROR
+    com.example: INFO
+  file: ./log/application.log
+
+spring:
+  profiles:
+    active: local
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/aniruthmp/springboot-config.git
+    inetutils:
+      preferredNetworks:
+        - 10.2.
+      ignoredInterfaces:
+        - docker0
+        - veth.*
+
+---
+spring:
+  profiles: docker
+  sleuth:
+   sampler:
+     percentage: 1.0
+   log:
+     json:
+       enabled: true
+  zipkin:
+    enabled: true
+    host: sb-ref-zipkin-service
+    base-url: http://sb-ref-zipkin-service:8080
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    nonSecurePortEnabled: true
+    metadataMap:
+      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://${EUREKA_HOST}:${EUREKA_PORT}/eureka/
+    fetchRegistry: true
+
+---
+spring:
+  profiles: local
+  sleuth:
+    sampler:
+      percentage: 1.0
+    log:
+      json:
+        enabled: true
+  zipkin:
+    enabled: false
+
+eureka:
+  client:
+    enabled: false
