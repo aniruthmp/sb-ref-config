@@ -54,12 +54,12 @@ spring:
       server:
         git:
           uri: https://github.com/aniruthmp/springboot-config.git
-    inetutils:
-      preferredNetworks:
-        - 10.2.
-      ignoredInterfaces:
-        - docker0
-        - veth.*
+    # inetutils:
+    #   preferredNetworks:
+    #     - 10.2.
+    #   ignoredInterfaces:
+    #     - docker0
+    #     - veth.*
 
 ---
 spring:

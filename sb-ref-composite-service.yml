@@ -6,10 +6,6 @@ spring:
     caffeine:
       spec: expireAfterAccess=30s,maximumSize=1000
   cloud:
-    inetutils:
-      ignoredInterfaces:
-        - docker0
-        - veth.*
     stream:
       bindings:
         output:

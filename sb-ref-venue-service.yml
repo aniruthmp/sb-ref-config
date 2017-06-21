@@ -1,10 +1,6 @@
 # Disable Spring Cloud and Zipkin
 spring:
   cloud:
-    inetutils:
-      ignoredInterfaces:
-        - docker0
-        - veth.*
     stream:
       bindings:
         input:
