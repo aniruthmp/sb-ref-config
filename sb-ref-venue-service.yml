@@ -43,3 +43,5 @@ spring:
     config:
       uri: http://sb-ref-config-service:8080
       fail-fast: true
+  couchbase:
+    bootstrap-hosts: ${COUCHBASE_IP}
