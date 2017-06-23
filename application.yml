@@ -22,6 +22,8 @@ ribbon:
     name: ${spring.application.name}
   eureka:
     enabled: true
+    ReadTimeout: 20000
+    ConnectTimeout: 20000
 
 ###
 # Hystrix Configuration
@@ -30,6 +32,7 @@ hystrix:
   command:
     default:
       execution:
+        timeout.enabled: false
         isolation:
           thread:
             timeoutInMilliseconds: 20000

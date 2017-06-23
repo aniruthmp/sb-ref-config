@@ -1,4 +1,5 @@
 zuul:
+  ribbon-isolation-strategy: semaphore
   ignoredServices: '*'
   sensitiveHeaders: Authorization
   routes:
