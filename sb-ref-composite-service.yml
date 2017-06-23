@@ -1,7 +1,5 @@
 # Disable Spring Cloud and Zipkin
 spring:
-  profiles:
-    active: local
   cache:
     caffeine:
       spec: expireAfterAccess=30s,maximumSize=1000
@@ -19,6 +17,7 @@ spring:
     enabled: false
 
 zuul:
+  ribbon-isolation-strategy: semaphore
   ignoredServices: '*'
   sensitiveHeaders: Authorization
   routes:

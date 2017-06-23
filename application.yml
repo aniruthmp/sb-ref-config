@@ -47,8 +47,6 @@ logging:
   file: ./log/application.log
 
 spring:
-  profiles:
-    active: local
   cloud:
     config:
       server:
