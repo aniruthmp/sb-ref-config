@@ -10,7 +10,7 @@ spring:
           resetOffsets: true
       kafka:
         binder:
-          brokers: $KAFKA_HOSTS
+          brokers: ${KAFKA_HOSTS}
         filter: test
   data:
     couchbase:
