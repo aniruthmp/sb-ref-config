@@ -38,9 +38,9 @@ hystrix:
             timeoutInMilliseconds: 20000
 
 zuul:
-    host:
-        connect-timeout-millis: 5000
-        socket-timeout-millis: 10000
+  host:
+    connect-timeout-millis: 5000
+    socket-timeout-millis: 10000
 
 ###
 # Logging Configuration
@@ -92,7 +92,7 @@ eureka:
     registerWithEureka: true
     serviceUrl:
       defaultZone: http://sb-ref-eureka-service:8761/eureka/
-    fetch-registry: false
+    fetch-registry: true
 
 ---
 spring:
