@@ -22,8 +22,8 @@ ribbon:
     name: ${spring.application.name}
   eureka:
     enabled: true
-    ReadTimeout: 20000
-    ConnectTimeout: 20000
+  ReadTimeout: 20000
+  ConnectTimeout: 20000
 
 ###
 # Hystrix Configuration
@@ -36,6 +36,11 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 20000
+
+zuul:
+    host:
+        connect-timeout-millis: 5000
+        socket-timeout-millis: 10000
 
 ###
 # Logging Configuration
