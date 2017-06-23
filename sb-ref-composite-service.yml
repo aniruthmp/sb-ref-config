@@ -12,7 +12,7 @@ spring:
           resetOffsets: true
       kafka:
         binder:
-          brokers: localhost:9092
+          brokers: $KAFKA_HOSTS
   zipkin:
     enabled: false
 
